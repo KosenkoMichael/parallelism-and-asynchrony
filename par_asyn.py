@@ -1,5 +1,6 @@
 import concurrent.futures
 import os
+import sys
 from time import sleep
 
 
@@ -39,7 +40,7 @@ def main() -> None:
     for future, path in zip(results, file_pathes):
         if future.result():
             print(f"Keyword '{keyword}' found in file: {path}")
-    sleep(10)
+    os.system("PAUSE")
 
 
 if __name__ == '__main__':
