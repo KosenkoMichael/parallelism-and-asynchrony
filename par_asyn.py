@@ -1,11 +1,11 @@
 import concurrent.futures
-import sys
 import os
+from time import sleep
 
 
 def search_keyword_in_file(keyword: str, filepath: str) -> bool:
     """
-    открытие файла и проверка без учета регистра
+    opening a file and checking case insensitively
     """
     with open(filepath, 'r') as file:
         for line in file:
@@ -16,7 +16,7 @@ def search_keyword_in_file(keyword: str, filepath: str) -> bool:
 
 def path_app(path: str) -> list:
     """
-    вернет пути к всем файлам лежищим в path/...
+    will return the path to all files in path/...
     """
     file_pathes = []
 
@@ -27,15 +27,8 @@ def path_app(path: str) -> list:
 
 
 def main() -> None:
-    """
-    пример вызова функции: python par_asyn.py "i'm here" "data"
-    """
-    if len(sys.argv) != 3:
-        print("Usage: python par_asyn.py <keyword> <folder_path>")
-        sys.exit(1)
-
-    keyword = sys.argv[1]
-    path = sys.argv[2]
+    keyword = input("input keyword >>>")
+    path = input("input folderpath >>>")
     file_pathes = path_app(path)
 
     results = []
@@ -46,6 +39,7 @@ def main() -> None:
     for future, path in zip(results, file_pathes):
         if future.result():
             print(f"Keyword '{keyword}' found in file: {path}")
+    sleep(10)
 
 
 if __name__ == '__main__':
