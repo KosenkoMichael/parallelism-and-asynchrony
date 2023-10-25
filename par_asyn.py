@@ -1,6 +1,6 @@
-import concurrent.futures
 import os
 import sys
+import concurrent.futures
 from time import sleep
 
 
@@ -15,22 +15,9 @@ def search_keyword_in_file(keyword: str, filepath: str) -> bool:
     return False
 
 
-def path_app(path: str) -> list:
-    """
-    will return the path to all files in path/...
-    """
-    file_pathes = []
-
-    file_names = os.listdir(path)
-    for file_name in file_names:
-        file_pathes.append(os.path.join(path, file_name))
-    return file_pathes
-
-
 def main() -> None:
     keyword = input("input keyword >>>")
-    path = input("input folderpath >>>")
-    file_pathes = path_app(path)
+    file_pathes = input("input filepath >>>").split()
 
     results = []
     for file_path in file_pathes:
