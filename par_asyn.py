@@ -16,8 +16,8 @@ def search_keyword_in_file(keyword: str, filepath: str) -> bool:
 
 
 def main() -> None:
-    keyword = input("input keyword >>>")
-    file_pathes = input("input filepath >>>").split()
+    keyword = sys.argv[1]
+    file_pathes = sys.argv[2:]
 
     results = []
     for file_path in file_pathes:
